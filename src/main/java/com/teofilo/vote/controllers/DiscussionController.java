@@ -11,6 +11,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -47,7 +48,7 @@ public class DiscussionController {
     })
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public DiscussionDto insert (@RequestBody DiscussionDto discussionDto){
+    public DiscussionDto insert (@RequestBody @Valid DiscussionDto discussionDto){
         return discussionService.insert(discussionDto);
     }
 
@@ -56,7 +57,7 @@ public class DiscussionController {
             @ApiResponse(code = 200, message = "Discussion updated successfully")
     })
     @PutMapping(path = "/{id}")
-    public DiscussionDto update (@RequestBody DiscussionDto discussionDto, @PathVariable Long id){
+    public DiscussionDto update (@RequestBody @Valid DiscussionDto discussionDto, @PathVariable Long id){
         try {
             return discussionService.update(id, discussionDto);
         } catch (DataNotFoundException e) {

@@ -1,8 +1,12 @@
 package com.teofilo.vote.dto;
 
+import javax.validation.constraints.NotEmpty;
+
 public class DiscussionDto {
     private Long id;
+    @NotEmpty(message = "title is required.")
     private String title;
+    @NotEmpty(message = "description is required.")
     private String description;
 
     public DiscussionDto() {
