@@ -19,6 +19,12 @@ public class Vote {
     public Vote() {
     }
 
+    public Vote(Boolean vote, User user, VoteSession voteSession) {
+        this.vote = vote;
+        this.user = user;
+        this.voteSession = voteSession;
+    }
+
     public Long getId() {
         return id;
     }
