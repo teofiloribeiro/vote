@@ -14,13 +14,18 @@ public class VoteSession {
     @OneToOne
     @JoinColumn(name = "discussion_id")
     private Discussion discussion;
-    @OneToMany
-    @JoinColumn(name = "vote_id")
+    @OneToMany(mappedBy = "voteSession")
     private List<Vote> votes;
     private Date startDate;
     private Date endDate;
 
     public VoteSession() {
+    }
+
+    public VoteSession(Discussion discussion, Date startDate, Date endDate) {
+        this.discussion = discussion;
+        this.startDate = startDate;
+        this.endDate = endDate;
     }
 
     public Long getId() {
